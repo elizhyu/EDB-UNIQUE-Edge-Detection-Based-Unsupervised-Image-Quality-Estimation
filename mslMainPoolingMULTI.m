@@ -13,7 +13,7 @@ corrType='Pearson';
 corrType2='Spearman';
 corrType3='Kendall';
 
-dataDir=['../../databases',filesep,'live_multi'];
+dataDir=['.\Database',filesep,'MULTI-LIVE'];
 
 for kk=1:poolingCounter
 paramInd=paramIndArray(kk);
@@ -26,7 +26,7 @@ n=size(distimgs,1);
 counter=0;
 
 for ii=1:n
-%     ii
+     ii
 counter=counter+1;    
 I=imread([imgDir,filesep,'blurjpeg',filesep,distimgs{ii}]);
 I2=imread([imgDir,filesep,'blurjpeg',filesep,refimgs{ref4dist(ii)}]);
@@ -68,7 +68,7 @@ n=size(distimgs,1);
 
 
 for jj=1:n
-%     jj
+     jj
 counter=counter+1;    
 I=imread([imgDir,filesep,'blurnoise',filesep,distimgs{jj}]);
 I2=imread([imgDir,filesep,'blurnoise',filesep,refimgs{ref4dist(jj)}]);

@@ -22,18 +22,18 @@ paramInd=paramIndArray(ii);
     
 %%
 %Directory Configuration
-dataDir=['../../databases',filesep,'live'];
+dataDir=['.\Database',filesep,'LIVE Release 2'];
 
 load([dataDir,filesep,'dmos.mat']);
 load([dataDir,filesep,'refnames_all.mat']);
 %Image directories
-data=[filesep,'live',filesep];
-imgDirRef=['../../databases',data,'refimgs',filesep];
-imgDirFastfading=['../../databases',data,'fastfading',filesep];
-imgDirGblur=['../../databases',data,'gblur',filesep];
-imgDirJp2k=['../../databases',data,'jp2k',filesep];
-imgDirJpeg=['../../databases',data,'jpeg',filesep];
-imgDirWn=['../../databases',data,'wn',filesep];
+data=[dataDir,filesep];
+imgDirRef=[data,'refimgs',filesep];
+imgDirFastfading=[data,'fastfading',filesep];
+imgDirGblur=[data,'gblur',filesep];
+imgDirJp2k=[data,'jp2k',filesep];
+imgDirJpeg=[data,'jpeg',filesep];
+imgDirWn=[data,'wn',filesep];
 
 refFiles=dir([imgDirRef,'*.bmp']);
 fastfadingFiles=dir([imgDirFastfading,'*.bmp']);

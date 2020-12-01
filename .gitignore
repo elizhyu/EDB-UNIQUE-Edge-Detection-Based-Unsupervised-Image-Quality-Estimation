@@ -5,3 +5,6 @@ corrBefore_metInd_1_poolInd_1.mat
 Multi_GT.mat
 Multi_corrBefore_metInd_1_poolInd_1.mat
 Multi_corrAfter_metInd_1_poolInd_1.mat
+Multi_metric_metInd_1_poolInd_1.txt
+Multi_rmse_metInd_1_poolInd_1.mat
+rmse_metInd_1_poolInd_1.mat

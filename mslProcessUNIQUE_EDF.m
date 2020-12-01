@@ -13,7 +13,7 @@ I = im2double(img);
 epsilon = 0.1; 
 count = 1; 
 scale = 8;
-
+Laplacian = [1,1,1;1,-8,1;1,1,1];
 %Convert m x n x 4 image into [(8x8x4) x count] patches
 I(:,:,4) = conv2(I(:,:,1), Laplacian, 'same');
 I(:,:,4) = boundary(I(:,:,4));
@@ -50,4 +50,18 @@ feature_full = 1./(1 + exp(-(feature_full)));
 %Reshaping back to a single vector
 feature = reshape(feature_full,[],1);
 
+end
+
+function img = boundary(input)
+    shape = size(input);
+    img = input;
+    for i = 1:shape(1)
+        for j = 1:shape(2)
+            if img(i,j) <0
+                img(i,j) = 0;
+            elseif img(i,j) >1
+                img(i,j) = 1;
+            end
+        end
+    end
 end

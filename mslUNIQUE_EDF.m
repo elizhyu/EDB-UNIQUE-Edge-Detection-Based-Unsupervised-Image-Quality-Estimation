@@ -1,4 +1,4 @@
-function result = mslUNIQUE(img1,img2)
+function result = mslUNIQUE_EDF(img1,img2)
 %%
 %  Author:              Mohit Prabhushankar
 %  PI:                  Ghassan AlRegib
@@ -13,7 +13,7 @@ image1 = imresize(img1,0.5);
 image2 = imresize(img2,0.5);
 
 %Loading Precalculated weights and bias
-workspace = load('ImageNet_Weights_YGCr.mat');        
+workspace = load('ImageNet_Weights_YGCr_EDF.mat');        
 weight = workspace.W;  
 bias = workspace.b;
 
@@ -25,8 +25,8 @@ img2(:,:,2) = image2(:,:,2);
           
 %Preparing images (Zero centering and ZCA whitening) and
 %multiplying by weights and adding bias
-img1_s = mslProcessUNIQUE(img1,weight,bias);
-img2_s = mslProcessUNIQUE(img2,weight,bias);
+img1_s = mslProcessUNIQUE_EDF(img1,weight,bias);
+img2_s = mslProcessUNIQUE_EDF(img2,weight,bias);
 
 %Discount those features that are much lesser than average
 %activation(0.035) - Suppression

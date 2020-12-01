@@ -11,7 +11,7 @@ clc
 % %Extract patches from ImageNet database
 % 
 % %Path where ImageNet database is stored
-% path = '../databases/ILSVRC2013_DET_test/';
+% path = '.\Database\ILSVRC2013_DET_test\';
 % %Size of patches to be extracted
 % Scale = 8;
 % 
@@ -28,7 +28,8 @@ numPatches = length(mslPatches);
 
 %% Parameter Initialization for score calculation in individual databases
 
-AEStruct = load('ImageNet_Weights_YGCr.mat');
+%AEStruct = load('ImageNet_Weights_YGCr.mat');
+AEStruct = load('ImageNet_Weights_YGCr_Original.mat');
 W = AEStruct.W;
 b = AEStruct.b;
 

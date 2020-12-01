@@ -148,9 +148,9 @@ k=1;
         if (strcmp(list{1,1}{j,1},refFiles(i).name))
            img(i).ImgWn(:,:,:,k)=imread([imgDirWn,list{1,1}{j+1,1}]);
            % debug to display the images
-           subplot(1,3,1), imshow(img(i).Img)
-           subplot(1,3,2), imshow(img(i).ImgWn(:,:,:,k))
-           subplot(1,3,3), imshow(uint8(img(i).ImgWn(:,:,:,k)))
+           % subplot(1,3,1), imshow(img(i).Img)
+           % subplot(1,3,2), imshow(img(i).ImgWn(:,:,:,k))
+           % subplot(1,3,3), imshow(uint8(img(i).ImgWn(:,:,:,k)))
            %
            img(i).ParamWn(k)=str2double(list{1,1}{j+2,1});
            tt=list{1,1}{j+1,1};

@@ -29,7 +29,7 @@ numPatches = length(mslPatches);
 %% Parameter Initialization for score calculation in individual databases
 
 %AEStruct = load('ImageNet_Weights_YGCr.mat');
-AEStruct = load('ImageNet_Weights_YGCr_Original.mat');
+AEStruct = load('ImageNet_Weights_YGCr_EDF.mat');
 W = AEStruct.W;
 b = AEStruct.b;
 
@@ -68,9 +68,16 @@ live_results(jj,:,:)=squeeze(corrMat);
 
 end
 
-pool_table=zeros(19,nMet);
-live=squeeze(live_results(:,2,:));
-multi=squeeze(multi_results(:,2,:));
+% Extract and separate three different correlation methods
+pool_table_ps=zeros(19,nMet);
+pool_table_sm=zeros(19,nMet);
+pool_table_kd=zeros(19,nMet);
+live_ps=squeeze(live_results(:,1,:));
+live_sm=squeeze(live_results(:,2,:));
+live_kd=squeeze(live_results(:,3,:));
+multi_ps=squeeze(multi_results(:,1,:));
+multi_sm=squeeze(multi_results(:,2,:));
+multi_kd=squeeze(multi_results(:,3,:));
 
 live_ind=[1,2,5,8,10,17];
 live_ind_int=[1,2,3,5,4,6];
@@ -81,51 +88,62 @@ for jj=1:nMet
 
     for ii=1:size(live_ind,2)
         if nMet==1 
-            pool_table(live_ind(ii))=live(live_ind_int(ii));
+            pool_table_ps(live_ind(ii))=live_ps(live_ind_int(ii));
+            pool_table_sm(live_ind(ii))=live_sm(live_ind_int(ii));
+            pool_table_kd(live_ind(ii))=live_kd(live_ind_int(ii));
         else
-            pool_table(live_ind(ii),jj)=live(jj,live_ind_int(ii));
-  
+            pool_table_ps(live_ind(ii),jj)=live_ps(jj,live_ind_int(ii));
+            pool_table_sm(live_ind(ii),jj)=live_sm(jj,live_ind_int(ii));
+            pool_table_kd(live_ind(ii),jj)=live_kd(jj,live_ind_int(ii));
         end
     end
 
     for ii=1:size(multi_ind,2)
         if nMet==1 
-            pool_table(multi_ind(ii))=multi(multi_ind_int(ii));
+            pool_table_ps(multi_ind(ii))=multi_ps(multi_ind_int(ii));
+            pool_table_sm(multi_ind(ii))=multi_sm(multi_ind_int(ii));
+            pool_table_kd(multi_ind(ii))=multi_kd(multi_ind_int(ii));
         else
-            pool_table(multi_ind(ii),jj)=multi(jj,multi_ind_int(ii));
-  
+            pool_table_ps(multi_ind(ii),jj)=multi_ps(jj,multi_ind_int(ii));
+            pool_table_sm(multi_ind(ii),jj)=multi_sm(jj,multi_ind_int(ii));
+            pool_table_kd(multi_ind(ii),jj)=multi_kd(jj,multi_ind_int(ii));
         end
     end
 
 end
 
-pool_table=abs(pool_table);
+pool_table_ps=abs(pool_table_ps);
+pool_table_sm=abs(pool_table_sm);
+pool_table_kd=abs(pool_table_kd);
 
 temp=load('ssim.mat');
 temp=temp.pool_table;
 
+% LIVE RESULTS
 ii=1; 
-dist_class{ii}=['Jp2k [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii)) ];
+dist_class{ii}=['Jp2k:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=2;
-dist_class{ii}=['Jpeg [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))   ];
+dist_class{ii}=['Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=4;
-dist_class{ii}=['Blur-Jpeg [MULTI]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Blur-Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=5;
-dist_class{ii}=['Wn [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Wn:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=6;
-dist_class{ii}=['Blur-Noise [MULTI]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Blur-Noise:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=8;
-dist_class{ii}=['FF [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['FF:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=10;
-dist_class{ii}=['Gblur [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Gblur:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+ii=11;
+dist_class{ii}=['All [LIVE]:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+
+% MULTI RESULTS
 ii=12;
-dist_class{ii}=['Blur-Jpeg [MULTI]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Blur-Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 ii=13;
-dist_class{ii}=['Blur-Noise [MULTI]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
-ii=17;
-dist_class{ii}=['All [LIVE]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
-ii=18;
-dist_class{ii}=['All [MULTI]:',num2str(pool_table(ii)),' SSIM: ',num2str(temp(ii))  ];
+dist_class{ii}=['Blur-Noise:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+ii=14;
+dist_class{ii}=['All [MULTI]:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
 
 toc
 

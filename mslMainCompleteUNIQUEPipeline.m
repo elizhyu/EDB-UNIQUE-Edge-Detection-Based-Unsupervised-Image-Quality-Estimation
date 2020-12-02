@@ -121,32 +121,34 @@ temp=temp.pool_table;
 
 % LIVE RESULTS
 ii=1; 
-dist_class{ii}=['Jp2k:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Jp2k:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=2;
-dist_class{ii}=['Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Jpeg:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=4;
-dist_class{ii}=['Blur-Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Blur-Jpeg:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=5;
-dist_class{ii}=['Wn:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Wn:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=6;
-dist_class{ii}=['Blur-Noise:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Blur-Noise:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=8;
-dist_class{ii}=['FF:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['FF:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=10;
-dist_class{ii}=['Gblur:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
-ii=11;
-dist_class{ii}=['All [LIVE]:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Gblur:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
+ii=17;
+jj=11;
+dist_class{jj}=['All [LIVE]:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 
 % MULTI RESULTS
 ii=12;
-dist_class{ii}=['Blur-Jpeg:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Blur-Jpeg:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 ii=13;
-dist_class{ii}=['Blur-Noise:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
-ii=14;
-dist_class{ii}=['All [MULTI]:\n','\tSSIM:\t',num2str(temp(ii)),'\nPearson:\t',num2str(pool_table_ps(ii)), '\tSpearman:\t',num2str(pool_table_sm(ii)),'\tKendall:\t',num2str(pool_table_kd(ii))];
+dist_class{ii}=['Blur-Noise:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
+ii=18;
+jj=14;
+dist_class{jj}=['All [MULTI]:    ','  SSIM:  ',num2str(temp(ii)),'    Pearson:  ',num2str(pool_table_ps(ii)), '  Spearman:  ',num2str(pool_table_sm(ii)),'  Kendall:  ',num2str(pool_table_kd(ii))];
 
 toc
 
-for ii=1:18
+for ii=1:14
    disp(dist_class{ii}) 
 end

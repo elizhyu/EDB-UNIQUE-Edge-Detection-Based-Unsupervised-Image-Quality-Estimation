@@ -13,7 +13,7 @@ image1 = imresize(img1,0.5);
 image2 = imresize(img2,0.5);
 
 %Loading Precalculated weights and bias
-workspace = load('InputWeights/ImageNet_Weights_YGCr.mat');        
+workspace = load('InputWeights/ImageNet_Weights_YGCr_1.mat');        
 weight = workspace.W;  
 bias = workspace.b;
 

@@ -1,4 +1,4 @@
-function feature = mslProcessUNIQUE(img,W,b)
+function feature = mslProcessUNIQUE_EDF(img,W,b)
 %%
 %  Author:              Mohit Prabhushankar
 %  PI:                  Ghassan AlRegib

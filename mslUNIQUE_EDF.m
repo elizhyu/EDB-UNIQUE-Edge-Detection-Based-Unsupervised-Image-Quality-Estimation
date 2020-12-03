@@ -40,7 +40,7 @@ if (sum(res) > 0)
     img2_s(res) = 0;              
 end  
     
-%Pooling using 10th power of Spearman Correlation coefficient
-result = abs(corr(img1_s,img2_s,'type','Spearman'))^3;
+%Pooling using 2nd power of Spearman Correlation coefficient
+result = abs(corr(img1_s,img2_s,'type','Spearman'))^2;
 
 end          
